@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Converter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="main-header">
+        <h1>Image Format Converter</h1>
+    </header>
+    <div class="container">
+        <h2>Convert Your Images with Ease</h2>
+        <div class="drop-zone" id="dropZone">
+            <p>Drag & Drop your image here or click to upload</p>
+            <input type="file" id="imageInput" accept="image/*,.svg" hidden>
+        </div>
+        <br>
+
+        <div class="mb-3 row align-items-center">
+            <div class="col-lg-3 text-start">
+                <label for="formatSelect" class="form-label">Convert to :</label>
+                <select id="formatSelect" class="form-select">
+                    <option value="jpeg">JPEG</option>
+                    <option value="png">PNG</option>
+                    <option value="webp">WebP</option>
+                    <option value="svg">SVG</option>
+                </select>
+            </div>
+            <div class="col-lg-7 text-start">
+                <label for="formatSelect" class="form-label">Enter new name :</label>
+                <input type="text" id="imageName" class="form-control" placeholder="Enter new name">
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-primary mt-4" onclick="showNameChange()">Change Name</button>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Resize:</label>
+            <div class="resize-controls">
+                <button class="btn btn-outline-secondary" onclick="resizeImage(-0.1)">-</button>
+                <span id="resizeFactor">100%</span>
+                <button class="btn btn-outline-secondary" onclick="resizeImage(0.1)">+</button>
+            </div>
+        </div>
+        <br />
+        <button class="btn btn-success" onclick="convertImage()">Download</button>
+        <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+
+    <div class="container about">
+        <h2 class="text-center">About</h2>
+        <hr/>
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+                <img src="./assets/img/logo.jpg" alt="Developer Gowtham" class="img-fluid rounded-circle mb-3"
+                    style="width: 200px;">
+            </div>
+            <div class="col-md-8">
+                <p>Hi, I'm Developer Gowtham, a passionate full-stack developer specializing in React and Node.js. I
+                    also work with no-code platforms and mobile app development. I enjoy creating user-friendly
+                    applications and sharing knowledge through projects like this Image Format Converter.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container faq">
+        <h3>FAQ</h3>
+        <hr/>
+        <p><strong>How to use this tool?</strong></p>
+        <p>Simply drag and drop your image into the provided box, select the desired format, rename the file if needed,
+            and click Convert and Download.</p>
+        <p><strong>What formats are supported?</strong></p>
+        <p>Currently, this tool supports JPEG, PNG, WebP, and SVG formats.</p>
+        <h4>Key Points</h4>
+        <ul>
+            <li>The tool allows users to convert images into different formats.</li>
+            <li>Images can be processed through a simple drag-and-drop interface.</li>
+            <li>Users can rename files before downloading.</li>
+            <li>The tool supports JPEG, PNG, WebP, and SVG formats.</li>
+            <li>Select the desired format, then convert and download the file effortlessly.</li>
+        </ul>
+    </div>
+
+    <div class="container contact">
+        <h3>Contact</h3>
+        
+        <form id="contactForm">
+            <div class="mb-3">
+                <label for="contactName" class="form-label">Name:</label>
+                <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+                <label for="contactEmail" class="form-label">Email:</label>
+                <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+                <label for="contactMessage" class="form-label">Message:</label>
+                <textarea id="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Developer Gowtham. All rights reserved.</a></p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <!-- Include the latest EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
